@@ -5,6 +5,9 @@ import { CacheModule } from '@nestjs/cache-manager'
 import KeyvRedis from '@keyv/redis'
 
 import { AppController } from './app.controller'
+import { MongooseModule } from '@nestjs/mongoose';
+import { DiscographyModule } from './discography/discography.module';
+
 
 @Module({
   imports: [
@@ -24,6 +27,8 @@ import { AppController } from './app.controller'
           isGlobal: true,
         }),
     AppModule,
+    MongooseModule.forRoot(process.env.MONGO_DB),
+    DiscographyModule, 
   ],
   controllers: [AppController],
 })
