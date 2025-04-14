@@ -5,7 +5,7 @@ import { CreateDiscographyDto, UpdateDiscographyDto } from './dto/discography.dt
 import { DiscographyResponseDto } from './dto/discography.dto';
 
 @ApiTags('Discography')
-@Controller('api/v1/discography')
+@Controller('discography')
 export class DiscographyController {
   constructor(private readonly discographyService: DiscographyService) {}
 
