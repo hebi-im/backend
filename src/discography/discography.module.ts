@@ -7,6 +7,6 @@ import { Discography, DiscographySchema } from './schemas/discography.schema';
 @Module({
   imports: [MongooseModule.forFeature([{ name: Discography.name, schema: DiscographySchema }])],
   controllers: [DiscographyController],
-  providers: [DiscographyService]
+  providers: [DiscographyService],
 })
 export class DiscographyModule {}
