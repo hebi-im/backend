@@ -5,9 +5,13 @@ import { CacheModule } from '@nestjs/cache-manager'
 import KeyvRedis from '@keyv/redis'
 
 import { AppController } from './app.controller'
-import { MongooseModule } from '@nestjs/mongoose';
-import { DiscographyModule } from './discography/discography.module';
-
+import { MongooseModule } from '@nestjs/mongoose'
+import { DiscographyModule } from './discography/discography.module'
+import { UploadModule } from './upload/upload.module'
+import { NewsService } from './news/news.service'
+import { NewsController } from './news/news.controller'
+import { NewsModule } from './news/news.module'
+import { BannerModule } from './banner/banner.module'
 
 @Module({
   imports: [
@@ -28,7 +32,10 @@ import { DiscographyModule } from './discography/discography.module';
         }),
     AppModule,
     MongooseModule.forRoot(process.env.MONGO_DB),
-    DiscographyModule, 
+    DiscographyModule,
+    UploadModule,
+    NewsModule,
+    BannerModule,
   ],
   controllers: [AppController],
 })
