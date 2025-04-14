@@ -7,6 +7,7 @@ import KeyvRedis from '@keyv/redis'
 import { AppController } from './app.controller'
 import { MongooseModule } from '@nestjs/mongoose';
 import { DiscographyModule } from './discography/discography.module';
+import { VideoModule } from './video/video.module'
 
 
 @Module({
@@ -28,7 +29,8 @@ import { DiscographyModule } from './discography/discography.module';
         }),
     AppModule,
     MongooseModule.forRoot(process.env.MONGO_DB),
-    DiscographyModule, 
+    DiscographyModule,
+    VideoModule,
   ],
   controllers: [AppController],
 })
