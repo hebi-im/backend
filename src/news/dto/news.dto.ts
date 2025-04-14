@@ -27,7 +27,9 @@ export class NewsResponseDto {
   @ApiProperty({ type: LocaleText })
   content: LocaleText
 
-  @ApiPropertyOptional({ example: 'https://cdn.hebi.im/thumbs/news1.jpg' })
+  @ApiPropertyOptional({
+    example: 'https://user-content.hebi.im/thumbs/news1.jpg',
+  })
   thumbnailUrl?: string
 
   @ApiPropertyOptional({ example: 'https://weverse.io/official/post/1' })

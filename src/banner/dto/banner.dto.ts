@@ -2,7 +2,7 @@ import { ApiProperty, ApiPropertyOptional, PartialType } from '@nestjs/swagger'
 import { LocaleText } from 'src/common/dto/locale-text.dto'
 
 export class CreateBannerDto {
-  @ApiProperty({ example: 'https://cdn.hebi.im/banners/banner1.jpg' })
+  @ApiProperty({ example: 'https://static.hebi.im/banners/banner1.jpg' })
   imageUrl: string
 
   @ApiPropertyOptional({ type: LocaleText })
@@ -27,7 +27,7 @@ export class BannerResponseDto {
   @ApiProperty({ example: '66138b38d232d3b0f894b789' })
   id: string
 
-  @ApiProperty({ example: 'https://cdn.hebi.im/banners/banner1.jpg' })
+  @ApiProperty({ example: 'https://static.hebi.im/banners/banner1.jpg' })
   imageUrl: string
 
   @ApiPropertyOptional({ type: LocaleText })
