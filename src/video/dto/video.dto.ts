@@ -8,10 +8,10 @@ export class CreateVideoDto {
   @ApiProperty({ example: 'MUSIC_VIDEO', enum: ['MUSIC_VIDEO', 'VLOG', 'LIVE', 'BEHIND', 'ETC'] })
   type: string;
 
-  @ApiProperty({ example: 'https://youtube.com/watch?v=123' })
+  @ApiProperty({ example: 'https://youtu.be/123' })
   externalUrl: string;
 
-  @ApiPropertyOptional({ example: 'https://cdn.hebi.im/thumbs/video1.jpg' })
+  @ApiPropertyOptional({ example: 'https://user-content.hebi.im/www/thumbs/video1.jpg' })
   thumbnailUrl?: string;
 
   @ApiPropertyOptional({ type: LocaleText })
