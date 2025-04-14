@@ -4,7 +4,7 @@ import { VideoService } from './video.service';
 import { CreateVideoDto, UpdateVideoDto, VideoResponseDto } from './dto/video.dto';
 
 @ApiTags('Video')
-@Controller('api/v1/video')
+@Controller('video')
 export class VideoController {
   constructor(private readonly videoService: VideoService) {}
 
