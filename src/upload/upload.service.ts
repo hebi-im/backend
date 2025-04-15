@@ -5,21 +5,20 @@ import {
 } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 import { Injectable } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
 
 @Injectable()
 export class UploadService {
   private s3: S3Client
   private bucket: string
 
-  constructor(private config: ConfigService) {
-    this.bucket = config.get<string>('R2_BUCKET')
+  constructor() {
+    this.bucket = process.env.R2_BUCKET
     this.s3 = new S3Client({
-      region: config.get('R2_REGION'),
-      endpoint: config.get('R2_ENDPOINT'),
+      region: process.env.R2_REGION,
+      endpoint: process.env.R2_ENDPOINT,
       credentials: {
-        accessKeyId: config.get('R2_ACCESS_KEY'),
-        secretAccessKey: config.get('R2_SECRET_KEY'),
+        accessKeyId: process.env.R2_ACCESS_KEY,
+        secretAccessKey: process.env.R2_SECRET_KEY,
       },
     })
   }
@@ -41,9 +40,8 @@ export class UploadService {
         expiresIn: 60 * 5,
       })
 
-      const baseUrl = this.config.get<string>('R2_PUBLIC_URL')
+      const baseUrl = process.env.R2_PUBLIC_URL
       const publicUrl = `${baseUrl}/${key}`
-
       return { uploadUrl, publicUrl }
     } catch (error) {
       console.error('presigned URL generation error:', error)

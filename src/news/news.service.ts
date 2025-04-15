@@ -36,16 +36,20 @@ export class NewsService {
       new: true,
     })
 
-    if (!updated)
+    if (!updated) {
       throw new APIException(HttpStatus.NOT_FOUND, 'News not found.')
+    }
+
     return this.toResponseDto(updated)
   }
 
   async delete(id: string): Promise<NewsResponseDto> {
     const deleted = await this.newsModel.findByIdAndDelete(id)
 
-    if (!deleted)
+    if (!deleted) {
       throw new APIException(HttpStatus.NOT_FOUND, 'News not found.')
+    }
+
     return this.toResponseDto(deleted)
   }
 

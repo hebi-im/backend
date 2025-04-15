@@ -30,16 +30,20 @@ export class BannerService {
       new: true,
     })
 
-    if (!updated)
+    if (!updated) {
       throw new APIException(HttpStatus.NOT_FOUND, 'Banner not found.')
+    }
+
     return this.toResponseDto(updated)
   }
 
   async delete(id: string): Promise<BannerResponseDto> {
     const deleted = await this.bannerModel.findByIdAndDelete(id)
 
-    if (!deleted)
+    if (!deleted) {
       throw new APIException(HttpStatus.NOT_FOUND, 'Banner not found.')
+    }
+
     return this.toResponseDto(deleted)
   }
 
