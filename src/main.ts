@@ -46,6 +46,7 @@ async function bootstrap() {
     })
   }
 
+  app.setGlobalPrefix('v1')
   app.useGlobalFilters(new GlobalExceptionFilter())
   app.useGlobalInterceptors(new TransformInterceptor())
 

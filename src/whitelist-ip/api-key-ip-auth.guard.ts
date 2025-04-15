@@ -1,6 +1,7 @@
-import { CanActivate, ExecutionContext, Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable, HttpStatus } from '@nestjs/common';
 import { WhitelistIpService } from './whitelist-ip.service';
 import APIException from 'src/common/dto/APIException.dto';
+const ipRangeCheck = require('ip-range-check');
 
 @Injectable()
 export class ApiKeyAndIpAuthGuard implements CanActivate {
@@ -15,7 +16,10 @@ export class ApiKeyAndIpAuthGuard implements CanActivate {
       throw new APIException(HttpStatus.UNAUTHORIZED, 'Invalid API Key');
     }
 
-    const allowed = await this.whitelistIpService.isWhitelisted(ip);
+    const whitelist = await this.whitelistIpService.getAll();
+    const whitelistIps = whitelist.map((entry) => entry.ip);
+
+    const allowed = ipRangeCheck(ip, whitelistIps);
     if (!allowed) {
       throw new APIException(HttpStatus.FORBIDDEN, 'Unauthorized IP address');
     }
