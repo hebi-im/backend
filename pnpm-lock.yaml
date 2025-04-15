@@ -41,6 +41,9 @@ importers:
       fastify:
         specifier: ^5.2.1
         version: 5.2.1
+      ip-range-check:
+        specifier: ^0.2.0
+        version: 0.2.0
       keyv:
         specifier: ^5.2.3
         version: 5.2.3
@@ -1409,6 +1412,13 @@ packages:
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
+
+  ip-range-check@0.2.0:
+    resolution: {integrity: sha512-oaM3l/3gHbLlt/tCWLvt0mj1qUaI+STuRFnUvARGCujK9vvU61+2JsDpmkMzR4VsJhuFXWWgeKKVnwwoFfzCqw==}
+
+  ipaddr.js@1.9.1:
+    resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}
+    engines: {node: '>= 0.10'}
 
   ipaddr.js@2.2.0:
     resolution: {integrity: sha512-Ag3wB2o37wslZS19hZqorUnrnzSkpOVy+IiiDEiTqNubEYpYuHWIf6K4psgN2ZWKExS4xhVCrRVfb/wfW8fWJA==}
@@ -3832,6 +3842,12 @@ snapshots:
   imurmurhash@0.1.4: {}
 
   inherits@2.0.4: {}
+
+  ip-range-check@0.2.0:
+    dependencies:
+      ipaddr.js: 1.9.1
+
+  ipaddr.js@1.9.1: {}
 
   ipaddr.js@2.2.0: {}
 
