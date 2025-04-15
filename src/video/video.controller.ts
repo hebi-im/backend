@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Patch, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Delete, Param, Body, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { VideoService } from './video.service';
 import { CreateVideoDto, UpdateVideoDto, VideoResponseDto } from './dto/video.dto';
+import { ApiKeyAndIpAuthGuard } from 'src/whitelist-ip/api-key-ip-auth.guard';
 
 @ApiTags('Video')
 @Controller('video')
@@ -20,12 +21,14 @@ export class VideoController {
     return this.videoService.findOne(id);
   }
 
+  @UseGuards(ApiKeyAndIpAuthGuard)
   @Post()
   @ApiOperation({ summary: 'Create a video record' })
   async create(@Body() dto: CreateVideoDto): Promise<VideoResponseDto> {
     return this.videoService.create(dto);
   }
 
+  @UseGuards(ApiKeyAndIpAuthGuard)
   @Patch(':id')
   @ApiOperation({ summary: 'Update a video record based on ID' })
   async update(
@@ -35,6 +38,7 @@ export class VideoController {
     return this.videoService.update(id, dto);
   }
 
+  @UseGuards(ApiKeyAndIpAuthGuard)
   @Delete(':id')
   @ApiOperation({ summary: 'Delete a video record based on ID' })
   async delete(@Param('id') id: string):Promise<VideoResponseDto> {
